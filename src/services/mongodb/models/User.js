@@ -28,7 +28,7 @@ const UserSchema = new mongoose.Schema(
         required: "Address",
       },
     ],
-    
+
     orders: [
       {
         type: mongoose.Types.ObjectId,

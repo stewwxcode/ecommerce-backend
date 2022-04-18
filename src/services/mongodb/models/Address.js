@@ -13,7 +13,7 @@ const AddressSchema = new mongoose.Schema(
       minlength: 50,
       required: true,
     },
-    
+
     landmark: {
       type: String,
       required: true,
