@@ -29,6 +29,6 @@ const OrderSchema = new mongoose.Schema(
     timestamps: true,
   }
 );
-const Order = new mongoose.node("Order",OrderSchema) 
+const Order = new mongoose.model("Order",OrderSchema) 
 
 export default Order;

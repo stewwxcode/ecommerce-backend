@@ -15,6 +15,7 @@ const UserSchema = new mongoose.Schema(
     email: {
       type: String,
       required: true,
+      unique: true,
     },
 
     password: {
@@ -22,17 +23,22 @@ const UserSchema = new mongoose.Schema(
       required: true,
     },
 
+    role: {
+      type: Number,
+      default: 0    // 0 is the non privileged user, 1 is the admin user.
+    },
+
     addresses: [
       {
         type: mongoose.Types.ObjectId,
-        required: "Address",
+        ref: "Address",
       },
     ],
 
     orders: [
       {
         type: mongoose.Types.ObjectId,
-        required: "Order",
+        ref: "Order",
       },
     ],
   },
@@ -40,6 +46,5 @@ const UserSchema = new mongoose.Schema(
     timestamps: true,
   }
 );
-const User = new mongoose.node("User", UserSchema);
 
-export default User;
+export const User = new mongoose.model("User", UserSchema);
