@@ -1,6 +1,6 @@
-import express from 'express';
+import express from 'express'
 import dotenv from 'dotenv'
-import { connectDB } from './services/mongodb/connectDB';
+import { connectDB } from './services/mongodb/connectDB'
 dotenv.config('./.env')
 
 import userRoutes from './routes/user'
@@ -15,5 +15,5 @@ app.use(express.json())
 app.use('/user',userRoutes)
 
 app.listen(PORT,()=>{
-   console.log(`server listening at port ${PORT}`)
+    console.log(`Server listening at port ${PORT}`)
 })
