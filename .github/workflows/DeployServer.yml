@@ -16,5 +16,4 @@ jobs:
         run: echo "hi from github workflow"
         name: git version 
         run: git --version
-        name node version
-        run: node --version
+      
