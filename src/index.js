@@ -15,8 +15,14 @@ app.use(express.json())
 app.use('/user',userRoutes)
 
 app.get('/',(req,res)=>{
-    res.send(`Server deployed on PORT; ${PORT}`);
+    res.send(`Server deployed by CI/CD pipeline on ${Date.now().toLocaleString()} `);
 })
+
+app.get("/getenvs", (req, res) => {
+  res.send(process.env);
+});
+
+console.log(process.env.DB_URI)
 
 app.listen(PORT,()=>{
     console.log(`Server listening at port ${PORT}`)

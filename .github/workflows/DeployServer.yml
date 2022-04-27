@@ -14,11 +14,15 @@ jobs:
     steps:
       - name: test
         run: echo "hi from github workflow"
-      - name: list before fetch
-        run: ls
       - name: get repo
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
-      - name: list after fetch
-        run: ls
+      - name: add github username
+        run: git config --global user.name "stewwxcode"
+      - name: add github email
+        run: git config --global user.email "stewartnadugaddi@gmail.com"
+      - name: add heroku remote
+        run: git remote add heroku https://heroku:ccac66a7-c0d8-4fd7-b394-8924a8233887@git.heroku.com/radiant-retreat-42989.git
+      - name: push to herku
+        run: git push heroku master --force
