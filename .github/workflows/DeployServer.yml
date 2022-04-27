@@ -23,6 +23,6 @@ jobs:
       - name: add github email
         run: git config --global user.email "stewartnadugaddi@gmail.com"
       - name: add heroku remote
-        run: git remote add heroku https://heroku:ccac66a7-c0d8-4fd7-b394-8924a8233887@git.heroku.com/radiant-retreat-42989.git
+        run: git remote add heroku https://heroku:${{secrets.HEROKU_API_KEY}}@git.heroku.com/${{secrets.HEROKU_APP_NAME}}.git
       - name: push to herku
         run: git push heroku master --force
