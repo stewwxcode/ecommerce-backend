@@ -4,6 +4,7 @@ import { connectDB } from './services/mongodb/connectDB'
 dotenv.config('./.env')
 
 import userRoutes from './routes/user'
+import categoryRoutes from './routes/category'
 
 const app = express()
 
@@ -13,9 +14,10 @@ connectDB()
 
 app.use(express.json())
 app.use('/user',userRoutes)
+app.use('/category',categoryRoutes)
 
 app.get('/',(req,res)=>{
-    res.send(`Server deployed by CI/CD pipeline with secrets ${new Date.now()} `);
+    res.send(`Server deployed by CI/CD pipeline with secrets `);
 })
 
 app.get("/getenvs", (req, res) => {
