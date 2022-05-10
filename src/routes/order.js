@@ -22,7 +22,7 @@ router.get(
   isAdmin,
   async (req, res) => {
     try {
-   
+
       const orders = await Order.find({})
 
       return res.json({
@@ -50,7 +50,7 @@ type : GET
 path : /order/me
 body : none
 query: none
-description: Route to get all orders
+description: Route to get all user orders
 */
 //!User route
 router.get(
@@ -58,8 +58,8 @@ router.get(
   isAuthenticated,
   async (req, res) => {
     try {
-        const user = req.user
-      const orders = await Order.find({_id:user})
+      const user = req.user
+      const orders = await Order.find({ _id: user })
 
       return res.json({
         data: {
