@@ -40,7 +40,7 @@ router.post(
         data: {
           category,
         },
-        success: false,
+        success: true,
         message: "Category added",
       });
     } catch (error) {
@@ -71,7 +71,7 @@ router.get("/all", async (req, res) => {
       data: {
         categories,
       },
-      success: false,
+      success: true,
       message: "Categories fetched",
     });
   } catch (error) {
@@ -94,21 +94,18 @@ query: none
 description: Route to fetch all categories
 */
 
-router.delete("/:id", 
-isAuthenticated, 
-isAdmin, 
-async (req, res) => {
+router.delete("/:id", isAuthenticated, isAdmin, async (req, res) => {
   try {
     const { id } = req.params;
     const category = await Category.findOneAndDelete({ _id: id });
 
     // check if a product is using this category
 
-    const products = Product.find({ category: id })
+    const products = Product.find({category:id})
 
-    if (products.length > 0) return res.json({
+    if(products.length>0) return res.json({
       data: {
-        category: null,
+        category:null,
       },
       success: false,
       message: "category could not be deleted",
