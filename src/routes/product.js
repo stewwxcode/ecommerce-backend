@@ -96,7 +96,7 @@ router.get("/all", async (req, res) => {
       data: {
         products,
       },
-      success: false,
+      success: true,
       message: "Products fetched",
     });
   } catch (error) {
@@ -119,10 +119,7 @@ query: none
 description: Route to fetch all categories
 */
 
-router.delete("/:id", 
-isAuthenticated, 
-isAdmin, 
-async (req, res) => {
+router.delete("/:id", isAuthenticated, isAdmin, async (req, res) => {
   try {
     const { id } = req.params;
     const product = await Product.findOneAndDelete({ _id: id });
